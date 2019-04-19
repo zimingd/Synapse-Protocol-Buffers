@@ -1,0 +1,28 @@
+syntax = "proto3";
+package org.sagebionetworks.repo.model.table;
+message ColumnModelProto {
+  int64 id = 1;
+  string name = 2;
+  string defaultValue = 3;
+  enum ColumnTypeProto {
+    STRING = 0;
+    DOUBLE = 1;
+    INTEGER = 2;
+    BOOLEAN = 3;
+    DATE = 4;
+    FILEHANDLEID = 5;
+    ENTITYID = 6;
+    LINK = 7;
+    LARGETEXT = 8;
+    USERID = 9;
+  }
+  ColumnTypeProto columnType = 4;
+  int64 maximumSize = 5;
+  repeated string enumValues = 6;
+  enum FacetTypeProto {
+    enumeration = 0;
+    range = 1;
+    _null = 3;
+  }
+  FacetTypeProto facetType = 7;
+}
