@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package org.sagebionetworks.repo.model.protobuf;
+
+message NamedAnnotationProto{
+	// another option is to have a "repeated AnnotationProto" 
+	// where AnnotationProto contains an enum describing if it is ADDITIONAL OR PRIMARY
+	map<string, AnnotationProto> annotations = 1;
+}
+
+message AnnotationProto{
+	message AnnotationValueProto{
+		oneof AnnotationValueUnion{
+			string stringValue = 1;
+			double doubleValue = 2;
+			int64 longValue = 3;
+			//date is stored as unix timestamp in millseconds
+			int64 dateValue = 4;
+			bytes blobValue = 5;
+		}
+	}
+	map<string, AnnotationValueProto> annoMap = 1;
+}
